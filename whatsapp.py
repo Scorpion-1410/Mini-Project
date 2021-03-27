@@ -32,7 +32,6 @@ def user_interface():
     whatsapp_screen = Toplevel(main_screen)
     whatsapp_screen.title("Whatsapp")
 
-
     # Number Label & Box
     Label(whatsapp_screen, text="ReceiverID", width=10).grid(row=0, column=0)
     Entry(whatsapp_screen, textvariable=receiverId).grid(row=0, column=2)

@@ -11,7 +11,7 @@ main_screen = None
 def main_account_screen():
     global main_screen
     main_screen = Tk()
-    main_screen.geometry("300x250")
+    main_screen.geometry("500x350")
     main_screen.title("Account Login")
     Label(text="Select Your Choice").pack()
     Label(text="").pack()

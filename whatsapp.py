@@ -50,7 +50,7 @@ def user_interface():
 
 def do_send_personal():
     x = number.get()
-    x = "+" + x
+    x = "+91" + x
     pywhatkit.sendwhatmsg(x, message.get(), hour.get(), minutes.get())
 
 

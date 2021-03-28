@@ -14,7 +14,11 @@ def main_account_screen():
     Label(text="Select Your Choice").pack()
     Label(text="").pack()
     Button(text="WhatsApp", command=wui).pack()
+    Label(text="", width=10).pack()
+    Label(text="", width=10).pack()
     Button(text="Gmail", command=gui).pack()
+    Label(text="", width=10).pack()
+    Label(text="", width=10).pack()
 
     main_screen.mainloop()
 

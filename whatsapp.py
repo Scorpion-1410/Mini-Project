@@ -4,8 +4,6 @@ from tkinter import *
 from tkinter.ttk import *
 
 # Global Variable is Declared and Initialize as None
-
-
 receiverId = None
 hour = None
 minutes = None
@@ -17,6 +15,7 @@ main_screen = None
 # Function for User Interface for Whatsapp Screen
 def user_interface():
     # Global variable Assigned Datatype
+    global main_screen
     global whatsapp_screen
     global receiverId
     global hour
@@ -28,7 +27,7 @@ def user_interface():
     minutes = IntVar()
     message = StringVar()
 
-    # New Whatsapp Window Screen is Created
+    # New Whatsapp Screen is Created
     whatsapp_screen = Toplevel(main_screen)
     whatsapp_screen.title("Whatsapp")
 

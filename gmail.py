@@ -55,6 +55,7 @@ def user_interface():
     Button(gmail_screen, text="Send", command=do_send_mail).grid(row=8, column=1)
 
 
+# Function for Sending Mail
 def do_send_mail():
     pywhatkit.mainfunctions.sendMail(sender_mail.get(), sender_pass.get(), receiver_mail.get(), message.get())
     Label(gmail_screen, text="\U0001f44d \U0001f44d", width=10).grid(row=11, column=1)

@@ -24,7 +24,6 @@ def main_account_screen():
     Label(text="", width=10).pack()
     Label(text="", width=10).pack()
 
-
     main_screen.mainloop()
 
 

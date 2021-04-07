@@ -47,3 +47,9 @@ def do_youtube():
 
 def play_on_youtube():
     pywhatkit.playonyt(youtube_search.get())
+
+
+def downloader():
+    url = YouTube(str(youtube_link.get()))
+    filters = url.streams.filter(progressive=True, file_extension='mp4')
+    filters.get_highest_resolution().download(output_path="path for downloaded file")

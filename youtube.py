@@ -43,3 +43,7 @@ def do_youtube():
     # Wiki Search Button which will call play_on_youtube()
     generate_yt_search_button = Button(youtube_screen, text="Search", command=play_on_youtube)
     generate_yt_search_button.grid(row=3, column=3)
+
+
+def play_on_youtube():
+    pywhatkit.playonyt(youtube_search.get())

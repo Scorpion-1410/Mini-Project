@@ -17,6 +17,7 @@ def do_google():
 
     google_label = Label(google_screen, text="Google", width=10)
     google_label.grid(row=4, column=2)
+    google_label.configure(background="black", foreground="white")
 
     # Entry box for Google Search
     google_entry = Entry(google_screen, textvariable=google_search)

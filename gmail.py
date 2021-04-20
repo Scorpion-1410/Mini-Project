@@ -32,22 +32,30 @@ def user_interface():
     gmail_screen.title("Gmail")
 
     # Sender Mail Label & Box
-    Label(gmail_screen, text="Sender Mail", width=10).grid(row=0, column=0)
+    q = Label(gmail_screen, text="Sender Mail", width=10)
+    q.grid(row=0, column=0)
+    q.configure(background="black", foreground="white")
     Entry(gmail_screen, textvariable=sender_mail, width=10).grid(row=0, column=2)
     Label(gmail_screen, text="", width=10).grid(row=1, column=0)
 
     # Sender Password Label & Box
-    Label(gmail_screen, text="Sender Pass", width=10).grid(row=2, column=0)
+    w = Label(gmail_screen, text="Sender Pass", width=10)
+    w.grid(row=2, column=0)
+    w.configure(background="black", foreground="white")
     Entry(gmail_screen, textvariable=sender_pass, show="*", width=10).grid(row=2, column=2)
     Label(gmail_screen, text="", width=10).grid(row=3, column=0)
 
     # Receiver Mail Label & Box
-    Label(gmail_screen, text="Receiver Mail", width=10).grid(row=4, column=0)
+    e = Label(gmail_screen, text="Receiver Mail", width=10)
+    e.grid(row=4, column=0)
+    e.configure(background="black", foreground="white")
     Entry(gmail_screen, textvariable=receiver_mail, width=10).grid(row=4, column=2)
     Label(gmail_screen, text="", width=10).grid(row=5, column=0)
 
     # Message Label & Box
-    Label(gmail_screen, text="Message", width=10).grid(row=6, column=0)
+    r = Label(gmail_screen, text="Message", width=10)
+    r.grid(row=6, column=0)
+    r.configure(background="black", foreground="white")
     Entry(gmail_screen, textvariable=message, width=10).grid(row=6, column=2)
     Label(gmail_screen, text="", width=10).grid(row=7, column=0)
 

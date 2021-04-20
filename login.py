@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter.ttk import *
 import re
 from main import main_account_screen
+import tkinter.font
 
 # screen variable
 main_screen = None
@@ -105,17 +106,22 @@ def loginScreen():
     global entry_password
 
     login_screen = Toplevel(main_screen)
+    login_screen.geometry("500x500")
     login_screen.title("Login")
     input_username = StringVar()
     input_password = StringVar()
 
-    entry_login = Entry(login_screen, textvariable=input_username).pack()
+    Label(login_screen, text="Username", width=10).pack()
+    Entry(login_screen, textvariable=input_username).pack()
+    Label(text="").pack()
+    Label(text="", width=10).pack()
+    Label(login_screen, text="Password", width=10).pack()
+    Entry(login_screen, textvariable=input_password, show='*').pack()
 
-    entry_password = Entry(login_screen, textvariable=input_password, show='*').pack()
-
+    Label(login_screen, text="", width=10).pack()
     button_login = Button(login_screen, text="Login", command=validation).pack()
-
-    button_to_main_screen = Button(login_screen, text="Main Screen", command=main_account_screen).pack()
+    Label(login_screen, text="", width=10).pack()
+    button_to_main_screen = Button(login_screen, text="Main Screen", command=main_account_screen1).pack()
 
 
 # register screen
@@ -144,23 +150,30 @@ def registerScreen():
 
     button_register = Button(register_screen, text="Register", command=registration).pack()
 
-    button_to_main_screen = Button(register_screen, text="Main Screen", command=main_account_screen).pack()
+    button_to_main_screen = Button(register_screen, text="Main Screen", command=main_account_screen1).pack()
 
 
 # main screen
-def main_account_screen():
-    global main_screen
-    main_screen = Tk()
-    main_screen.geometry("300x250")
-    main_screen.title("Account Login")
+def main_account_screen1():
+    global main_screen1
+    main_screen1 = Tk()
+    main_screen1.geometry("1000x600")
+    main_screen1.title("Account Login")
 
-    Label(main_screen, text="Select Your Choice").pack()
-    Label(main_screen, text="").pack()
-    Button(main_screen, text="Log In", width="30", command=loginScreen).pack()
-    Label(main_screen, text="").pack()
-    Button(main_screen, text="Register", width="30", command=registerScreen).pack()
-    main_screen.mainloop()
+
+    tr = Label(main_screen1, text="Welcome to Social Media Utility Tool")
+    tr.pack()
+    Font_tuple = ("Comic Sans MS", 20, "bold")
+    tr.configure(font=Font_tuple)
+    d = Label(main_screen1, text="Select Your Choice :")
+    d.pack()
+    d.configure(background="black", foreground="white")
+    Label(main_screen1, text="").pack()
+    Button(main_screen1, text="Log In", width="30", command=loginScreen).pack()
+    Label(main_screen1, text="").pack()
+    Button(main_screen1, text="Register", width="30", command=registerScreen).pack()
+    main_screen1.mainloop()
 
 
 # main screen function calling
-main_account_screen()
+main_account_screen1()

@@ -5,7 +5,7 @@ import re
 from main import main_account_screen
 
 # screen variable
-main_screen1 = None
+main_screen = None
 login_screen = None
 register_screen = None
 
@@ -104,7 +104,7 @@ def loginScreen():
     global entry_login
     global entry_password
 
-    login_screen = Toplevel(main_screen1)
+    login_screen = Toplevel(main_screen)
     login_screen.title("Login")
     input_username = StringVar()
     input_password = StringVar()
@@ -121,7 +121,7 @@ def loginScreen():
 # register screen
 def registerScreen():
     global register_screen
-    register_screen = Toplevel(main_screen1)
+    register_screen = Toplevel(main_screen)
     register_screen.title("Register")
 
     global fname
@@ -149,17 +149,17 @@ def registerScreen():
 
 # main screen
 def main_account_screen():
-    global main_screen1
-    main_screen1 = Tk()
-    main_screen1.geometry("300x250")
-    main_screen1.title("Account Login")
+    global main_screen
+    main_screen = Tk()
+    main_screen.geometry("300x250")
+    main_screen.title("Account Login")
 
-    Label(main_screen1, text="Select Your Choice").pack()
-    Label(main_screen1, text="").pack()
-    Button(main_screen1, text="Log In", width="30", command=loginScreen).pack()
-    Label(main_screen1, text="").pack()
-    Button(main_screen1, text="Register", width="30", command=registerScreen).pack()
-    main_screen1.mainloop()
+    Label(main_screen, text="Select Your Choice").pack()
+    Label(main_screen, text="").pack()
+    Button(main_screen, text="Log In", width="30", command=loginScreen).pack()
+    Label(main_screen, text="").pack()
+    Button(main_screen, text="Register", width="30", command=registerScreen).pack()
+    main_screen.mainloop()
 
 
 # main screen function calling

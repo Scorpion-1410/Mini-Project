@@ -60,10 +60,10 @@ def user_interface():
     Label(whatsapp_screen, text=" ", width=10).grid(row=7, column=0)
 
     # Submit Button for Personal Message
-    Button(whatsapp_screen, text="Personal", command=do_send_personal).grid(row=10, column=1)
+    Button(whatsapp_screen, text="Send Message", command=do_send_personal).grid(row=10, column=1)
 
     # Submit Button for Group Message
-    Button(whatsapp_screen, text="Group", command=do_send_group).grid(row=10, column=2)
+    #Button(whatsapp_screen, text="Group", command=do_send_group).grid(row=10, column=2)
     # Label(whatsapp_screen, text="\U0001f44d \U0001f44d", width=10).grid(row=11, column=1)
 
 

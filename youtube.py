@@ -11,7 +11,7 @@ main_screen = None
 
 
 def do_youtube():
-    global youtube_search
+    global youtube_screen
     global youtube_search
     global youtube_link
     youtube_screen = Toplevel(main_screen)
@@ -54,4 +54,5 @@ def play_on_youtube():
 def downloader():
     url = YouTube(str(youtube_link.get()))
     filters = url.streams.filter(progressive=True, file_extension='mp4')
-    filters.get_highest_resolution().download(output_path="path for downloaded file")
+    filters.get_highest_resolution().download(output_path="Downloaded file")
+    Label(youtube_screen, text="\U0001f44d \U0001f44d", width=10).grid(row=11, column=3)

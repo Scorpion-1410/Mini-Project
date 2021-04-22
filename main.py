@@ -4,7 +4,7 @@ from whatsapp import user_interface as wui
 from gmail import user_interface as gui
 from google_ import do_google
 from youtube import do_youtube
-#from login import main_account_screen1
+
 main_screen = None
 
 
@@ -24,12 +24,3 @@ def main_account_screen():
     Button(text="Youtube", command=do_youtube).pack()
     Label(text="", width=10).pack()
     Label(text="", width=10).pack()
-
-    #main_screen.mainloop()
-
-#main_account_screen1()
-#main_account_screen()
-''' global main_screen
-    main_screen = Tk()
-    main_screen.geometry("500x350")
-    main_screen.title("Main")'''

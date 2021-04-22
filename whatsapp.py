@@ -77,5 +77,5 @@ def do_send_personal():
 
 # Function for Sending Group Message
 def do_send_group():
-    pywhatkit.sendwhatmsg_to_group(receiverId.get(), message.get(), hour.get(), minutes.get(), wait_time=20)
+    pywhatkit.sendwhatmsg_to_group(receiverId.get(), message.get(), hour.get(), minutes.get(), wait_time=10)
     Label(whatsapp_screen, text="\U0001f44d \U0001f44d", width=10).grid(row=11, column=2)

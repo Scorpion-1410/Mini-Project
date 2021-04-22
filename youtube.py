@@ -16,6 +16,7 @@ def do_youtube():
     global youtube_link
     youtube_screen = Toplevel(main_screen)
     youtube_screen.title("Youtube Search")
+    youtube_screen.geometry("350x200")
     youtube_search = StringVar()
     youtube_link = StringVar()
 

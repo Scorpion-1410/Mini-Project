@@ -13,9 +13,10 @@ def do_google():
     global google_search
     google_screen = Toplevel(main_screen)
     google_screen.title("Google Search")
+    google_screen.geometry("500x200")
     google_search = StringVar()
 
-    google_label = Label(google_screen, text="Google", width=10)
+    google_label = Label(google_screen, text="Google", width=20)
     google_label.grid(row=4, column=2)
     google_label.configure(background="black", foreground="white")
 

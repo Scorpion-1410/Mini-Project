@@ -93,7 +93,6 @@ def validation():
     file.close()
 
 
-
 """                                           Screens                                                  """
 
 
@@ -159,7 +158,6 @@ def main_account_screen1():
     main_screen1 = Tk()
     main_screen1.geometry("1000x600")
     main_screen1.title("Account Login")
-
 
     tr = Label(main_screen1, text="Welcome to Social Media Utility Tool")
     tr.pack()

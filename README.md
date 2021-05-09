@@ -8,6 +8,11 @@ Install Pillow
 ```
 pip install pillow
 ```
+Install All the required Packages at Once
+
+```
+pip install -r requirements.txt
+```
 
 Must be Logged in web.whatsapp.com for sending whatsapp message and PC must be awake.
 

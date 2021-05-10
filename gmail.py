@@ -1,5 +1,6 @@
 # Import Statements
-import pywhatkit
+# import pywhatkit
+import smtplib
 from tkinter import *
 from tkinter.ttk import *
 
@@ -32,30 +33,30 @@ def user_interface():
     gmail_screen.title("Gmail")
 
     # Sender Mail Label & Box
-    q = Label(gmail_screen, text="Sender Mail", width=15)
-    q.grid(row=0, column=0)
-    q.configure(background="black", foreground="white")
+    sender_mail_label = Label(gmail_screen, text="Sender Mail", width=15)
+    sender_mail_label.grid(row=0, column=0)
+    sender_mail_label.configure(background="black", foreground="white")
     Entry(gmail_screen, textvariable=sender_mail, width=10).grid(row=0, column=2)
     Label(gmail_screen, text="", width=20).grid(row=1, column=0)
 
     # Sender Password Label & Box
-    w = Label(gmail_screen, text="Sender Password", width=15)
-    w.grid(row=2, column=0)
-    w.configure(background="black", foreground="white")
+    sender_pass_label = Label(gmail_screen, text="Sender Password", width=15)
+    sender_pass_label.grid(row=2, column=0)
+    sender_pass_label.configure(background="black", foreground="white")
     Entry(gmail_screen, textvariable=sender_pass, show="*", width=10).grid(row=2, column=2)
     Label(gmail_screen, text="", width=20).grid(row=3, column=0)
 
     # Receiver Mail Label & Box
-    e = Label(gmail_screen, text="Receiver Mail", width=15)
-    e.grid(row=4, column=0)
-    e.configure(background="black", foreground="white")
+    receiver_mail_label = Label(gmail_screen, text="Receiver Mail", width=15)
+    receiver_mail_label.grid(row=4, column=0)
+    receiver_mail_label.configure(background="black", foreground="white")
     Entry(gmail_screen, textvariable=receiver_mail, width=10).grid(row=4, column=2)
     Label(gmail_screen, text="", width=20).grid(row=5, column=0)
 
     # Message Label & Box
-    r = Label(gmail_screen, text="Message", width=15)
-    r.grid(row=6, column=0)
-    r.configure(background="black", foreground="white")
+    message_label = Label(gmail_screen, text="Message", width=15)
+    message_label.grid(row=6, column=0)
+    message_label.configure(background="black", foreground="white")
     Entry(gmail_screen, textvariable=message, width=10).grid(row=6, column=2)
     Label(gmail_screen, text="", width=20).grid(row=7, column=0)
 
@@ -63,7 +64,21 @@ def user_interface():
     Button(gmail_screen, text="Send", command=do_send_mail).grid(row=8, column=1)
 
 
+try:
+    def send_mail(my_mail, my_pass, mail_to, content):
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.ehlo()
+        server.starttls()
+        server.login(my_mail, my_pass)
+        server.sendmail(my_mail, mail_to, content)
+        server.close()
+except Exception as e:
+    print(e)
+
+
 # Function for Sending Mail
 def do_send_mail():
-    pywhatkit.mainfunctions.sendMail(sender_mail.get(), sender_pass.get(), receiver_mail.get(), message.get())
-    Label(gmail_screen, text="\U0001f44d \U0001f44d", width=10).grid(row=11, column=1)
+    s_mail = sender_mail.get()+"@gmail.com"
+    r_mail = receiver_mail.get()+"@gmail.com"
+    send_mail(s_mail, sender_pass.get(), r_mail, message.get())
+    Label(gmail_screen, text="Mail Sent Successfully").grid(row=11, column=1)

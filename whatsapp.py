@@ -32,9 +32,9 @@ def user_interface():
     whatsapp_screen.title("Whatsapp")
 
     # Number Label & Box
-    l = Label(whatsapp_screen, text="ReceiverID", width=10)
-    l.grid(row=0, column=0)
-    l.configure(background="black", foreground="white")
+    id_label = Label(whatsapp_screen, text="ReceiverID", width=10)
+    id_label.grid(row=0, column=0)
+    id_label.configure(background="black", foreground="white")
     Entry(whatsapp_screen, textvariable=receiverId).grid(row=0, column=2)
     Label(whatsapp_screen, text=" ", width=10).grid(row=1, column=0)
 
@@ -59,12 +59,10 @@ def user_interface():
     Entry(whatsapp_screen, textvariable=message).grid(row=6, column=2)
     Label(whatsapp_screen, text=" ", width=10).grid(row=7, column=0)
 
-    # Submit Button for Personal Message
+    # Submit Button
     Button(whatsapp_screen, text="Send Message", command=do_send_personal).grid(row=10, column=1)
 
-    # Submit Button for Group Message
-    #Button(whatsapp_screen, text="Group", command=do_send_group).grid(row=10, column=2)
-    # Label(whatsapp_screen, text="\U0001f44d \U0001f44d", width=10).grid(row=11, column=1)
+    Button(whatsapp_screen, text="Home Page", command=home_page_screen).grid(row=12, column=1)
 
 
 # Function for Sending Personal Message

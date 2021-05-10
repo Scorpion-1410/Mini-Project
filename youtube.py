@@ -10,7 +10,7 @@ youtube_link = None
 main_screen = None
 
 
-def do_youtube():
+def user_interface():
     global youtube_screen
     global youtube_search
     global youtube_link

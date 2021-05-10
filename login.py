@@ -1,9 +1,11 @@
 # import statement
+import logging
 from tkinter import *
 from tkinter.ttk import *
 import re
-from main import main_account_screen
-import tkinter.font
+from main import home_page_screen
+
+# import tkinter.font
 
 # screen variable
 main_screen = None
@@ -15,15 +17,13 @@ input_username = None
 input_password = None
 
 # registration variables
-fname = None
-lname = None
+first_name = None
+last_name = None
 username = None
 password = None
 
 entry_password = None
 entry_login = None
-
-'''                                            Functions                                               '''
 
 
 # appending to user data to database named database.txt
@@ -32,9 +32,9 @@ def registration():
     line = file.readlines()
 
     # checking password strength
-    fl = 0
+    # fl = 0
     while True:
-        if (len(password.get()) < 8):
+        if len(password.get()) < 8:
             fl = -1
             break
         elif not re.search("[a-z]", password.get()):
@@ -54,50 +54,49 @@ def registration():
             break
         else:
             fl = 0
-            password_valid_label = Label(register_screen, text="Valid password").pack()
+            Label(register_screen, text="Valid password").pack()
             break
     if fl == -1:
-        password_invalid_label = Label(register_screen, text="Password Not Valid").pack()
+        Label(register_screen, text="Password Not Valid").pack()
     else:
         try:
-            index = line.index("Username:-" + username.get() + "\n")
-            already_exist_label = Label(register_screen, text="User Already Exists!!").pack()
-        except:
-            file.write("Name:-" + fname.get() + " " + lname.get() + "\nUsername:-" +
+            line.index("Username:-" + username.get() + "\n")
+            Label(register_screen, text="User Already Exists!!").pack()
+        except Exception as e:
+            logging.exception(e)
+            file.write("Name:-" + first_name.get() + " " + last_name.get() + "\nUsername:-" +
                        username.get() + "\nPassword:-" + password.get() + "\n")
-            successfully_done_label = Label(register_screen, text="Successfully Registered").pack()
+            Label(register_screen, text="Successfully Registered").pack()
     file.close()
 
 
 # validating the credentials
 def validation():
     # formatting the username and password
-    formated_username = "Username:-" + input_username.get() + "\n"
-    formated_password = "Password:-" + input_password.get() + "\n"
+    formatted_username = "Username:-" + input_username.get() + "\n"
+    formatted_password = "Password:-" + input_password.get() + "\n"
 
     file = open("database.txt", "r")
     line = file.readlines()
     try:
-        username_index = line.index(formated_username)
+        username_index = line.index(formatted_username)
         for i in range(len(line)):
-            if formated_username == line[username_index]:
-                if formated_password == line[username_index + 1]:
-                    congo = Label(login_screen, text="Congratulations").pack()
-                    main_account_screen()
+            if formatted_username == line[username_index]:
+                if formatted_password == line[username_index + 1]:
+                    Label(login_screen, text="Congratulations").pack()
+                    home_page_screen()
                     break
                 else:
-                    password_incorrect = Label(login_screen, text="Password Incorrect").pack()
+                    Label(login_screen, text="Password Incorrect").pack()
                     break
-    except:
-        user_not_found = Label(login_screen, text="User not Found").pack()
+    except Exception as e:
+        logging.exception(e)
+        Label(login_screen, text="User not Found").pack()
     file.close()
 
 
-"""                                           Screens                                                  """
-
-
 # login screen
-def loginScreen():
+def login_screen_ui():
     global login_screen
     global input_username
     global input_password
@@ -118,60 +117,65 @@ def loginScreen():
     Entry(login_screen, textvariable=input_password, show='*').pack()
 
     Label(login_screen, text="", width=10).pack()
-    button_login = Button(login_screen, text="Login", command=validation).pack()
+    Button(login_screen, text="Login", command=validation).pack()
+
     Label(login_screen, text="", width=10).pack()
-    button_to_main_screen = Button(login_screen, text="Main Screen", command=main_account_screen1).pack()
+    Button(login_screen, text="Main Screen", command=main_account_screen).pack()
 
 
 # register screen
-def registerScreen():
+def register_screen_ui():
     global register_screen
     register_screen = Toplevel(main_screen)
     register_screen.title("Register")
 
-    global fname
-    global lname
+    global first_name
+    global last_name
     global username
     global password
 
-    fname = StringVar()
-    lname = StringVar()
+    first_name = StringVar()
+    last_name = StringVar()
     username = StringVar()
     password = StringVar()
 
-    entry_fname = Entry(register_screen, textvariable=fname).pack()
+    Label(register_screen, text="First Name").pack()
+    Entry(register_screen, textvariable=first_name).pack()
 
-    entry_lname = Entry(register_screen, textvariable=lname).pack()
+    Label(register_screen, text="Last Name").pack()
+    Entry(register_screen, textvariable=last_name).pack()
 
-    entry_username = Entry(register_screen, textvariable=username).pack()
+    Label(register_screen, text="User Name").pack()
+    Entry(register_screen, textvariable=username).pack()
 
-    entry_key = Entry(register_screen, textvariable=password).pack()
+    Label(register_screen, text="Password").pack()
+    Entry(register_screen, textvariable=password).pack()
 
-    button_register = Button(register_screen, text="Register", command=registration).pack()
+    Button(register_screen, text="Register", command=registration).pack()
 
-    button_to_main_screen = Button(register_screen, text="Main Screen", command=main_account_screen1).pack()
+    Button(register_screen, text="Main Screen", command=main_account_screen).pack()
 
 
 # main screen
-def main_account_screen1():
-    global main_screen1
-    main_screen1 = Tk()
-    main_screen1.geometry("1000x600")
-    main_screen1.title("Account Login")
+def main_account_screen():
+    global main_screen
+    main_screen = Tk()
+    main_screen.geometry("1000x600")
+    main_screen.title("Account Login")
 
-    tr = Label(main_screen1, text="Welcome to Social Media Utility Tool")
+    tr = Label(main_screen, text="Welcome to Social Media Utility Tool")
     tr.pack()
-    Font_tuple = ("Comic Sans MS", 20, "bold")
-    tr.configure(font=Font_tuple)
-    d = Label(main_screen1, text="Select Your Choice :")
+    font_tuple = ("Comic Sans MS", 20, "bold")
+    tr.configure(font=font_tuple)
+    d = Label(main_screen, text="Select Your Choice :")
     d.pack()
     d.configure(background="black", foreground="white")
-    Label(main_screen1, text="").pack()
-    Button(main_screen1, text="Log In", width="30", command=loginScreen).pack()
-    Label(main_screen1, text="").pack()
-    Button(main_screen1, text="Register", width="30", command=registerScreen).pack()
-    main_screen1.mainloop()
+    Label(main_screen, text="").pack()
+    Button(main_screen, text="Log In", width="30", command=login_screen_ui).pack()
+    Label(main_screen, text="").pack()
+    Button(main_screen, text="Register", width="30", command=register_screen_ui).pack()
+    main_screen.mainloop()
 
 
 # main screen function calling
-main_account_screen1()
+main_account_screen()

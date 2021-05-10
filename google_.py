@@ -8,7 +8,7 @@ google_search = None
 main_screen = None
 
 
-def do_google():
+def user_interface():
     global google_screen
     global google_search
     google_screen = Toplevel(main_screen)
@@ -25,10 +25,9 @@ def do_google():
     google_entry.grid(row=4, column=3)
 
     # Google Search Button which will call googleSearch()
-    generate_google_search_button = Button(google_screen, text="Search", command=googleSearch)
+    generate_google_search_button = Button(google_screen, text="Search", command=do_google_search)
     generate_google_search_button.grid(row=7, column=3)
 
 
-def googleSearch():
+def do_google_search():
     pywhatkit.search(google_search.get())
-    google_screen.configure(background="yellow")
